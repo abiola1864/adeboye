@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>The Adeboye Review | Smart Government. Real Accountability. Better Ideas for Nigeria.</title>
+  <meta name="description" content="Evidence-driven analysis of democracy, leadership, institutions, and governance reforms in Nigeria. Independent commentary by Kunle J. Adeboye."/>
+  <meta name="keywords" content="Nigeria governance, democracy Nigeria, Nigerian institutions, governance reform Nigeria, Kunle Adeboye, accountability Nigeria, public policy Nigeria"/>
+  <meta name="author" content="Kunle J. Adeboye"/>
+  <meta name="robots" content="index, follow"/>
+  <meta property="og:title" content="The Adeboye Review | Smart Government. Real Accountability."/>
+  <meta property="og:description" content="Evidence-driven analysis of democracy, leadership, institutions, and governance reforms in Nigeria."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://adeboye.onrender.com/"/>
+  <meta property="og:image" content="https://adeboye.onrender.com/img/logo.png"/>
+  <meta property="og:site_name" content="The Adeboye Review"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="The Adeboye Review | Smart Government. Real Accountability."/>
+  <meta name="twitter:description" content="Evidence-driven analysis of democracy, leadership, institutions, and governance reforms in Nigeria."/>
+  <meta name="twitter:image" content="https://adeboye.onrender.com/img/logo.png"/>
+  <link rel="canonical" href="https://adeboye.onrender.com/"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" type="image/png" href="/img/logo.png"/>
+  <style>
+    /* ══ HOMEPAGE STYLES ══════════════════════════════════════════ */
+
+    /* Hero — full-bleed, dramatic */
+    .hp-hero {
+      background: linear-gradient(160deg, #0e2018 0%, #1b5c2e 55%, #14401f 100%);
+      padding: 56px 0 52px;
+      border-bottom: 4px solid var(--gold);
+      position: relative; overflow: hidden;
+    }
+    .hp-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hp-hero::after {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,150,46,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hp-hero-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 48px;
+      position: relative; z-index: 1;
+    }
+    .hp-hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hp-hero-eyebrow::before {
+      content: ''; width: 24px; height: 1px; background: var(--gold);
+    }
+    .hp-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+      font-weight: 900; line-height: 1.15;
+      color: #fff; letter-spacing: -.02em;
+      margin-bottom: 16px;
+    }
+    .hp-hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold), #e8c55a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hp-hero-sub {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: 1.05rem; color: rgba(255,255,255,.75);
+      line-height: 1.65; margin-bottom: 28px; max-width: 520px;
+    }
+    .hp-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hp-hero-stat {
+      text-align: right; flex-shrink: 0;
+    }
+    .hp-hero-stat-item {
+      margin-bottom: 20px;
+    }
+    .hp-hero-stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem; font-weight: 900;
+      color: #fff; line-height: 1;
+      display: block;
+    }
+    .hp-hero-stat-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* Mission ticker */
+    .hp-ticker {
+      background: var(--navy);
+      padding: 10px 0;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .hp-ticker-inner {
+      display: flex; gap: 48px;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+    .hp-ticker-inner:hover { animation-play-state: paused; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .hp-ticker-item {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      flex-shrink: 0;
+    }
+    .hp-ticker-item .dot {
+      color: var(--gold); margin-right: 48px;
+    }
+
+    /* Main layout */
+    .hp-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .hp-grid { display: grid; grid-template-columns: 1fr 320px; gap: 0; }
+
+    /* Main column */
+    .hp-main { padding: 52px 52px 52px 0; border-right: 1px solid var(--rule); }
+
+    /* Intro */
+    .hp-intro { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--rule); }
+    .hp-intro p { font-size: 1.05rem; line-height: 1.9; color: #3a4a5a; }
+    .hp-intro p + p { margin-top: 14px; }
+    .hp-intro p:first-child::first-letter {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 4rem; float: left; line-height: .78;
+      margin-right: 8px; margin-top: 5px; color: var(--green);
+    }
+
+    /* Section label */
+    .hp-sec {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+    }
+    .hp-sec span {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--green);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .hp-sec::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    /* Essay items */
+    .hp-essays { margin-bottom: 12px; }
+    .hp-essay {
+      display: grid; grid-template-columns: 58px 1fr;
+      gap: 18px; align-items: start;
+      padding: 22px 14px;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none; color: inherit;
+      border-radius: 4px; margin: 0 -14px;
+      transition: all .22s cubic-bezier(.4,0,.2,1);
+      position: relative;
+    }
+    .hp-essay:first-child { padding-top: 0; }
+    .hp-essay:last-child { border-bottom: none; }
+    .hp-essay:hover { background: var(--offbg); transform: translateX(3px); }
+    .hp-essay:hover .hp-essay-title { color: var(--green); }
+    .hp-essay:hover .hp-read-link { letter-spacing: .2em; color: var(--green); }
+    /* NEW indicator — left border stripe */
+    .hp-essay.is-new::before {
+      content: ''; position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 3px; background: var(--green);
+      border-radius: 0 2px 2px 0;
+    }
+    .hp-thumb {
+      width: 54px; height: 54px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0; margin-top: 3px;
+      border: 2px solid var(--rule); background: var(--offbg);
+      transition: border-color .22s, transform .22s;
+    }
+    .hp-essay:hover .hp-thumb { border-color: var(--green); transform: scale(1.05); }
+    .hp-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .hp-thumb-icon { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .hp-thumb-icon svg { fill: #ccc; width: 22px; height: 22px; }
+    .hp-essay-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+    .hp-essay-cat {
+      font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
+    }
+    .hp-essay-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: .93rem; line-height: 1.35;
+      color: var(--navy); margin-bottom: 6px; transition: color .2s;
+    }
+    .hp-essay-teaser {
+      font-family: Georgia, serif; font-size: .82rem; line-height: 1.65; color: var(--muted);
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .hp-essay-foot {
+      display: flex; align-items: center; justify-content: space-between; margin-top: 10px;
+    }
+    .hp-essay-date { font-family: 'Montserrat', sans-serif; font-size: 8.5px; letter-spacing: .07em; color: #aab; }
+    .hp-read-link {
+      font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 700;
+      letter-spacing: .13em; text-transform: uppercase; color: var(--navy);
+      text-decoration: none; transition: all .2s;
+    }
+    .hp-all-link {
+      margin-top: 20px; margin-bottom: 52px;
+      display: flex; justify-content: flex-end;
+    }
+
+    /* Category grid */
+    .hp-cats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    }
+    .hp-cat {
+      background: #fff; padding: 26px 22px;
+      text-decoration: none; color: inherit;
+      transition: all .22s; position: relative; overflow: hidden;
+    }
+    .hp-cat::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+    }
+    .hp-cat:hover { background: var(--offbg); }
+    .hp-cat:hover::after { transform: scaleX(1); }
+    .hp-cat:hover .hp-cat-name { color: var(--green); }
+    .hp-cat-emoji { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+    .hp-cat-num {
+      font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 700;
+      letter-spacing: .18em; color: var(--gold); margin-bottom: 7px;
+    }
+    .hp-cat-name {
+      font-family: 'Montserrat', sans-serif; font-size: .92rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .04em;
+      color: var(--navy); margin-bottom: 5px; transition: color .2s;
+    }
+    .hp-cat-tagline {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: .76rem; color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .hp-cat-desc {
+      font-family: Georgia, serif; font-size: .79rem;
+      line-height: 1.7; color: var(--muted);
+    }
+    .hp-cat-arrow {
+      display: inline-block; margin-top: 12px;
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--green);
+    }
+
+    /* About band */
+    .hp-about {
+      margin-top: 52px; margin-left: -52px; margin-right: 0;
+      background: var(--navy); padding: 36px 52px;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 28px;
+    }
+    .hp-about-label {
+      font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 700;
+      letter-spacing: .24em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .hp-about p {
+      font-family: Georgia, serif; font-style: italic;
+      font-size: .95rem; line-height: 1.7; color: rgba(255,255,255,.72);
+    }
+
+    /* SIDEBAR */
+    .hp-side { padding: 52px 0 52px 40px; display: flex; flex-direction: column; gap: 28px; }
+
+    /* Sidebar bio */
+    .hp-bio {
+      background: var(--navy); padding: 26px;
+      border-radius: 3px; position: relative; overflow: hidden;
+    }
+    .hp-bio::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--green));
+    }
+    .hp-bio-hd { display: flex; align-items: center; gap: 13px; margin-bottom: 14px; }
+    .hp-bio-av {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--green); border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .hp-bio-av svg { fill: rgba(255,255,255,.88); width: 20px; height: 20px; }
+    .hp-bio-lbl {
+      font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 700;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px;
+    }
+    .hp-bio-name { font-family: 'Montserrat', sans-serif; font-size: .88rem; font-weight: 800; color: #fff; }
+    .hp-bio p { font-family: Georgia, serif; font-size: .79rem; line-height: 1.75; color: #8fa0b4; }
+    .hp-bio p strong { color: #c0d0e4; }
+    .hp-bio-link {
+      display: inline-block; margin-top: 12px;
+      font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--gold);
+      text-decoration: none; border-bottom: 1px solid rgba(184,150,46,.35);
+      transition: border-color .2s;
+    }
+    .hp-bio-link:hover { border-color: var(--gold); }
+
+    /* Sidebar recent */
+    .hp-recent {
+      background: var(--offbg); border-top: 3px solid var(--navy); padding: 22px;
+    }
+    .hp-recent-lbl {
+      font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 700;
+      letter-spacing: .24em; text-transform: uppercase; color: var(--navy); margin-bottom: 14px;
+    }
+    .hp-recent-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 12px 0; border-bottom: 1px solid var(--rule);
+      text-decoration: none; color: inherit; transition: all .2s;
+    }
+    .hp-recent-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .hp-recent-item:hover .hp-recent-title { color: var(--green); }
+    .hp-recent-num {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 800;
+      color: var(--gold); flex-shrink: 0; min-width: 22px;
+    }
+    .hp-recent-cat {
+      font-family: 'Montserrat', sans-serif; font-size: 7.5px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 3px; display: flex; align-items: center; gap: 6px;
+    }
+    .hp-recent-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 700;
+      font-size: .79rem; line-height: 1.35; color: var(--navy); transition: color .2s;
+    }
+    .hp-recent-date { font-family: 'Montserrat', sans-serif; font-size: 7.5px; color: #aab; margin-top: 4px; }
+
+    /* Newsletter */
+    .hp-nl { background: var(--green); padding: 26px; border-radius: 3px; }
+    .hp-nl-title {
+      font-family: 'Montserrat', sans-serif; font-size: .9rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .05em; color: #fff; margin-bottom: 8px;
+    }
+    .hp-nl p { font-family: Georgia, serif; font-style: italic; font-size: .79rem; line-height: 1.65; color: rgba(255,255,255,.8); margin-bottom: 14px; }
+    .hp-nl input {
+      width: 100%; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
+      color: #fff; padding: 10px 12px; font-family: 'Montserrat', sans-serif; font-size: 11px;
+      outline: none; margin-bottom: 8px; display: block; border-radius: 2px; transition: border .2s;
+    }
+    .hp-nl input::placeholder { color: rgba(255,255,255,.45); }
+    .hp-nl input:focus { border-color: var(--gold); }
+    .hp-nl button {
+      width: 100%; background: var(--gold); color: var(--navy); border: none;
+      padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; cursor: pointer;
+      transition: opacity .2s; display: block; border-radius: 2px;
+    }
+    .hp-nl button:hover { opacity: .88; }
+
+    /* Responsive */
+    @media(max-width:900px) {
+      .hp-hero-stat { display: none; }
+      .hp-hero h1 { font-size: 1.7rem; }
+    }
+    @media(max-width:700px) {
+      .hp-hero { padding: 36px 0 32px; }
+      .hp-hero-inner { grid-template-columns: 1fr; padding: 0 16px; gap: 24px; }
+      .hp-hero-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .btn { text-align: center; padding: 12px 8px; display: block; }
+      .hp-wrap { padding: 0 16px; }
+      .hp-grid { grid-template-columns: 1fr; }
+      .hp-main { padding: 28px 0; border-right: none; border-bottom: 1px solid var(--rule); }
+      .hp-side { padding: 28px 0; }
+      .hp-cats { grid-template-columns: 1fr; }
+      .hp-about { grid-template-columns: 1fr; margin-left: 0; padding: 24px 16px; }
+      .hp-essay { grid-template-columns: 44px 1fr; gap: 14px; padding: 18px 12px; margin: 0 -12px; }
+      .hp-thumb { width: 42px; height: 42px; }
+    }
+    @media(max-width:380px) {
+      .hp-hero-btns { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<div class="topbar">
+  <span>Policy &middot; Democracy &middot; Institutions &middot; Leadership</span>
+  <span class="topbar-date">The Adeboye Review &mdash; 2026</span>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/index.html" class="logo-link">
+      <div class="logo-ring"><img src="/img/logo.png" alt="The Adeboye Review Logo"/></div>
+      <div class="logo-text">
+        <div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div>
+        <div class="tagline">Smart government. Real accountability.</div>
+      </div>
+    </a>
+    <nav class="site-nav">
+      <a href="/index.html" class="active">Home</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="/contact.html#subscribe" class="btn-subscribe">Subscribe</a>
+    </div>
+  </div>
+  <div class="mob-bar">
+    <span class="mob-active">Home</span>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob-menu" id="mob-menu">
+    <a href="/index.html" class="active">Home</a>
+    <a href="/articles.html">Articles</a>
+    <a href="/categories.html">Categories</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/contact.html#subscribe" style="color:var(--green);">Subscribe &rarr;</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hp-hero">
+  <div class="hp-hero-inner">
+    <div>
+      <div class="hp-hero-eyebrow">Independent Governance Commentary &mdash; Nigeria</div>
+      <h1>Clear ideas for <em>stronger governance</em> and democratic accountability</h1>
+      <p class="hp-hero-sub">Evidence-driven analysis of democracy, leadership, institutions, and governance reforms in Nigeria. A space for clarity, accountability, and stronger public thinking.</p>
+      <div class="hp-hero-btns">
+        <a href="/articles.html" class="btn btn-white">Start Reading</a>
+        <a href="/contact.html#subscribe" class="btn btn-ghost">Subscribe for Updates</a>
+      </div>
+    </div>
+    <div class="hp-hero-stat">
+      <div class="hp-hero-stat-item">
+        <span class="hp-hero-stat-num" id="hero-post-count">—</span>
+        <span class="hp-hero-stat-label">Essays Published</span>
+      </div>
+      <div class="hp-hero-stat-item">
+        <span class="hp-hero-stat-num">4</span>
+        <span class="hp-hero-stat-label">Categories</span>
+      </div>
+      <div class="hp-hero-stat-item">
+        <span class="hp-hero-stat-num">2026</span>
+        <span class="hp-hero-stat-label">Est. Lagos</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="hp-ticker">
+  <div class="hp-ticker-inner">
+    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Democracy &mdash; Power to the people, in practice</span>
+    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Leadership &mdash; Power, ethics, and accountability</span>
+    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Institutions &mdash; The pillars that hold society together</span>
+    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Reforms &mdash; Fixing the broken systems</span>
+    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Democracy &mdash; Power to the people, in practice</span>
+    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Leadership &mdash; Power, ethics, and accountability</span>
+    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Institutions &mdash; The pillars that hold society together</span>
+    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Reforms &mdash; Fixing the broken systems</span>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="hp-wrap">
+  <div class="hp-grid">
+
+    <main class="hp-main">
+
+      <!-- INTRO -->
+      <div class="hp-intro">
+        <p>Nigeria&rsquo;s governance story is still being written, and the quality of its leadership, institutions, and democratic culture will determine what that story becomes. The Adeboye Review examines the systems, incentives, and forms of leadership that shape public life in Nigeria &mdash; through analysis, commentary, and evidence-driven insight.</p>
+        <p>This is a space for clarity, accountability, and stronger public thinking.</p>
+      </div>
+
+      <!-- LATEST ESSAYS -->
+      <div class="hp-sec"><span>Latest Essays</span></div>
+      <div class="hp-essays" id="hp-essays">
+        <p style="padding:20px 0;color:var(--muted);font-family:Georgia,serif;font-style:italic;">Loading latest essays&hellip;</p>
+      </div>
+      <div class="hp-all-link">
+        <a href="/articles.html" class="btn btn-outline-green">View all essays &rarr;</a>
+      </div>
+
+      <!-- CATEGORIES -->
+      <div class="hp-sec"><span>Editorial Categories</span></div>
+      <div class="hp-cats">
+        <a href="/category-democracy.html" class="hp-cat">
+          <span class="hp-cat-emoji">&#127963;&#65039;</span>
+          <div class="hp-cat-num">01</div>
+          <div class="hp-cat-name">Democracy</div>
+          <div class="hp-cat-tagline">Power to the people, in practice.</div>
+          <div class="hp-cat-desc">Elections, civic participation, accountability mechanisms, and the norms that sustain democratic culture in Nigeria.</div>
+          <div class="hp-cat-arrow">Explore &rarr;</div>
+        </a>
+        <a href="/category-leadership.html" class="hp-cat">
+          <span class="hp-cat-emoji">&#128101;</span>
+          <div class="hp-cat-num">02</div>
+          <div class="hp-cat-name">Leadership</div>
+          <div class="hp-cat-tagline">Power, ethics, and accountability.</div>
+          <div class="hp-cat-desc">Critical analysis of those in power &mdash; decisions, ethics, and the political will required to shape our collective future.</div>
+          <div class="hp-cat-arrow">Explore &rarr;</div>
+        </a>
+        <a href="/category-institutions.html" class="hp-cat">
+          <span class="hp-cat-emoji">&#127970;</span>
+          <div class="hp-cat-num">03</div>
+          <div class="hp-cat-name">Institutions</div>
+          <div class="hp-cat-tagline">The pillars that hold society together.</div>
+          <div class="hp-cat-desc">Evaluating the strength, independence, and integrity of courts, civil service, and regulatory bodies.</div>
+          <div class="hp-cat-arrow">Explore &rarr;</div>
+        </a>
+        <a href="/category-reforms.html" class="hp-cat">
+          <span class="hp-cat-emoji">&#9881;&#65039;</span>
+          <div class="hp-cat-num">04</div>
+          <div class="hp-cat-name">Reforms</div>
+          <div class="hp-cat-tagline">Fixing the broken systems.</div>
+          <div class="hp-cat-desc">Legislative overhauls, structural changes, and the practical blueprints needed to modernise governance.</div>
+          <div class="hp-cat-arrow">Explore &rarr;</div>
+        </a>
+      </div>
+
+      <!-- ABOUT BAND -->
+      <div class="hp-about">
+        <div>
+          <div class="hp-about-label">About The Adeboye Review</div>
+          <p>A platform for clear, evidence-driven writing on governance, leadership, and the institutions that shape public life in Nigeria. Not a platform for outrage or partisanship &mdash; grounded in evidence, written with rigour, committed to thoughtful public analysis.</p>
+        </div>
+        <a href="/about.html" class="btn btn-white" style="flex-shrink:0;white-space:nowrap;">Read More &rarr;</a>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="hp-side">
+
+      <div class="hp-bio reveal">
+        <div class="hp-bio-hd">
+          <div class="hp-bio-av"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+          <div>
+            <div class="hp-bio-lbl">About the Founder</div>
+            <div class="hp-bio-name">Kunle J. Adeboye</div>
+          </div>
+        </div>
+        <p><strong>Governance and public policy analyst</strong> exploring how leadership culture, democratic norms, and institutional performance shape Nigeria&rsquo;s governance outcomes &mdash; and what reforms can strengthen public trust.</p>
+        <a href="/about.html" class="hp-bio-link">Read full bio &rarr;</a>
+      </div>
+
+      <div class="hp-recent reveal">
+        <div class="hp-recent-lbl">Most Recent</div>
+        <div id="hp-recent-posts">
+          <p style="color:var(--muted);font-size:.78rem;padding:8px 0;font-family:Georgia,serif;font-style:italic;">Loading&hellip;</p>
+        </div>
+      </div>
+
+      <div class="hp-nl reveal">
+        <div class="hp-nl-title">Stay Informed</div>
+        <p>New essays, contributor calls, and occasional special features. Thoughtful, occasional, worth your time.</p>
+        <div class="nl-form">
+          <input type="text" placeholder="Full name"/>
+          <input type="email" placeholder="Email address"/>
+          <button type="button">Subscribe</button>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="/index.html" class="logo-link">
+        <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+        <div class="logo-text" style="margin-left:12px;">
+          <div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div>
+        </div>
+      </a>
+      <p style="margin-top:14px;">Smart government. Real accountability. Better ideas for Nigeria&rsquo;s future.</p>
+      <div class="footer-social">
+        <a href="#" title="Twitter">&#120143;</a>
+        <a href="#" title="LinkedIn">in</a>
+        <a href="#" title="Email">&#9993;</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigate</h4>
+      <a href="/index.html">Home</a><a href="/articles.html">All Articles</a>
+      <a href="/categories.html">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Categories</h4>
+      <a href="/category-democracy.html">&#127963;&#65039; Democracy</a>
+      <a href="/category-leadership.html">&#128101; Leadership</a>
+      <a href="/category-institutions.html">&#127970; Institutions</a>
+      <a href="/category-reforms.html">&#9881;&#65039; Reforms</a>
+    </div>
+    <div class="footer-col"><h4>The Review</h4>
+      <a href="/about.html">Mission &amp; Purpose</a>
+      <a href="/about.html">Editorial Approach</a>
+      <a href="/contact.html">Contribute</a>
+      <a href="/contact.html#subscribe">Newsletter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Kunle J. Adeboye. All rights reserved.</span>
+    <span class="footer-brand-name">The Adeboye <span class="t2">Review</span></span>
+  </div>
+</footer>
+
+<button id="back-top" aria-label="Back to top">&#8679;</button>
+<script src="/js/main.js"></script>
+<script>
+// Load essays — newest first, NEW badge on recent ones
+API.getPosts({ limit: 5 }).then(function(res) {
+  var countEl = document.getElementById('hero-post-count');
+  var el = document.getElementById('hp-essays');
+  if (!res.success || !res.posts.length) {
+    el.innerHTML = '<p style="padding:20px 0;color:var(--muted);font-family:Georgia,serif;font-style:italic;">No essays published yet.</p>';
+    if (countEl) countEl.textContent = '0';
+    return;
+  }
+  var posts = res.posts.sort(function(a,b){ return new Date(b.created_at)-new Date(a.created_at); });
+  if (countEl) countEl.textContent = posts.length;
+  el.innerHTML = posts.map(function(p) {
+    var img = p.image_url
+      ? '<img src="'+p.image_url+'" alt=""/>'
+      : '<div class="hp-thumb-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>';
+    var badge = p.is_new ? '<span class="badge badge-new">New</span>' : '';
+    var newClass = p.is_new ? ' is-new' : '';
+    return '<a href="/article.html?slug='+p.slug+'" class="hp-essay'+newClass+'">'
+      +'<div class="hp-thumb">'+img+'</div>'
+      +'<div>'
+      +'<div class="hp-essay-meta"><span class="hp-essay-cat">'+esc(p.category)+'</span>'+badge+'</div>'
+      +'<div class="hp-essay-title">'+esc(p.title)+'</div>'
+      +'<div class="hp-essay-teaser">'+esc(p.excerpt||'')+'</div>'
+      +'<div class="hp-essay-foot">'
+      +'<span class="hp-essay-date">'+formatDate(p.created_at)+' &middot; '+esc(p.read_time||'')+'</span>'
+      +'<span class="hp-read-link">Read Essay &rarr;</span>'
+      +'</div></div></a>';
+  }).join('');
+});
+
+// Sidebar recent
+API.getPosts({ limit: 5 }).then(function(res) {
+  var el = document.getElementById('hp-recent-posts');
+  if (!res.success) return;
+  var posts = res.posts.sort(function(a,b){ return new Date(b.created_at)-new Date(a.created_at); });
+  el.innerHTML = posts.map(function(p, i) {
+    var badge = p.is_new ? '<span class="badge badge-new" style="font-size:7px;padding:2px 5px;">New</span>' : '';
+    return '<a href="/article.html?slug='+p.slug+'" class="hp-recent-item">'
+      +'<div class="hp-recent-num">0'+(i+1)+'</div>'
+      +'<div><div class="hp-recent-cat">'+esc(p.category)+' '+badge+'</div>'
+      +'<div class="hp-recent-title">'+esc(p.title)+'</div>'
+      +'<div class="hp-recent-date">'+formatDate(p.created_at)+'</div></div></a>';
+  }).join('');
+});
+</script>
+</body>
+</html>

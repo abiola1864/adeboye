@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Article | The Adeboye Review</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" type="image/png" href="/img/logo.png"/>
+  <style>
+    /* ── Social bar ── */
+    .social-bar{display:flex;align-items:center;gap:10px;padding:20px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:28px 0;flex-wrap:wrap;}
+    .social-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:3px;font-family:"Montserrat",sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:1px solid;transition:all .2s;text-decoration:none;}
+    .like-btn{border-color:var(--green);color:var(--green);background:#fff;}
+    .like-btn.liked{background:var(--green);color:#fff;}
+    .like-btn:hover{background:var(--green);color:#fff;}
+    .share-tw{border-color:#1da1f2;color:#1da1f2;background:#fff;}
+    .share-tw:hover{background:#1da1f2;color:#fff;}
+    .share-wa{border-color:#25d366;color:#25d366;background:#fff;}
+    .share-wa:hover{background:#25d366;color:#fff;}
+    .share-li{border-color:#0077b5;color:#0077b5;background:#fff;}
+    .share-li:hover{background:#0077b5;color:#fff;}
+    .share-cp{border-color:var(--muted);color:var(--muted);background:#fff;}
+    .share-cp:hover{background:var(--muted);color:#fff;}
+    .social-stat{font-family:"Montserrat",sans-serif;font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-left:auto;}
+
+    /* ── Comments ── */
+    .comments-section{margin-top:48px;padding-top:36px;border-top:2px solid var(--navy);}
+    .comments-title{font-family:"Montserrat",sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;letter-spacing:.04em;color:var(--navy);margin-bottom:28px;display:flex;align-items:center;gap:10px;}
+    .comments-count{background:var(--green);color:#fff;font-size:.7rem;padding:3px 9px;border-radius:2px;}
+
+    /* Comment form */
+    .comment-form{background:var(--offbg);padding:24px;border-left:4px solid var(--green);margin-bottom:36px;}
+    .comment-form h3{font-family:"Montserrat",sans-serif;font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin-bottom:16px;}
+    .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+    .cf-input{width:100%;padding:10px 13px;border:1px solid var(--rule);background:#fff;font-family:Georgia,serif;font-size:.88rem;color:var(--navy);outline:none;border-radius:2px;transition:border .2s;}
+    .cf-input:focus{border-color:var(--green);}
+    .cf-textarea{width:100%;padding:10px 13px;border:1px solid var(--rule);background:#fff;font-family:Georgia,serif;font-size:.88rem;color:var(--navy);outline:none;border-radius:2px;transition:border .2s;min-height:100px;resize:vertical;margin-bottom:12px;}
+    .cf-textarea:focus{border-color:var(--green);}
+    .cf-submit{font-family:"Montserrat",sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--green);color:#fff;border:none;padding:11px 24px;cursor:pointer;border-radius:2px;transition:background .2s;}
+    .cf-submit:hover{background:var(--green2);}
+
+    /* Comment items */
+    .comment-list{display:flex;flex-direction:column;gap:0;}
+    .comment-item{padding:20px 0;border-bottom:1px solid var(--rule);}
+    .comment-item:last-child{border-bottom:none;}
+    .comment-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+    .comment-avatar{width:38px;height:38px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:"Montserrat",sans-serif;font-weight:800;font-size:.85rem;color:#fff;flex-shrink:0;text-transform:uppercase;}
+    .comment-author{font-family:"Montserrat",sans-serif;font-weight:700;font-size:.82rem;color:var(--navy);}
+    .comment-date{font-family:"Montserrat",sans-serif;font-size:.72rem;color:var(--muted);letter-spacing:.05em;}
+    .comment-body{font-family:Georgia,serif;font-size:.88rem;line-height:1.75;color:#445;margin-bottom:10px;}
+    .comment-actions{display:flex;align-items:center;gap:12px;}
+    .comment-like-btn{background:none;border:none;cursor:pointer;font-family:"Montserrat",sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0;display:flex;align-items:center;gap:4px;transition:color .2s;}
+    .comment-like-btn:hover,.comment-like-btn.liked{color:var(--green);}
+    .reply-btn{background:none;border:none;cursor:pointer;font-family:"Montserrat",sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0;transition:color .2s;}
+    .reply-btn:hover{color:var(--navy);}
+
+    /* Replies */
+    .replies{margin-left:50px;margin-top:12px;border-left:2px solid var(--rule);padding-left:18px;}
+    .reply-form{background:#fff;border:1px solid var(--rule);padding:16px;margin-top:12px;border-radius:2px;display:none;}
+    .reply-form.open{display:block;}
+    .empty-comments{font-family:Georgia,serif;font-style:italic;color:var(--muted);font-size:.9rem;padding:20px 0;text-align:center;}
+
+    @media(max-width:700px){
+      .cf-row{grid-template-columns:1fr;}
+      .social-bar{gap:7px;}
+      .social-btn{padding:8px 12px;font-size:9px;}
+      .replies{margin-left:20px;}
+    }
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div class="topbar">
+  <span>Policy &middot; Democracy &middot; Institutions &middot; Leadership</span>
+  <span class="topbar-date">The Adeboye Review &mdash; 2026</span>
+</div>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/index.html" class="logo-link">
+      <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+      <div class="logo-text">
+        <div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div>
+        <div class="tagline">Smart government. Real accountability.</div>
+      </div>
+    </a>
+    <nav class="site-nav">
+      <a href="/index.html">Home</a>
+      <a href="/articles.html" class="active">Articles</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="/contact.html#subscribe" class="btn-subscribe">Subscribe</a>
+    </div>
+  </div>
+  <div class="mob-bar">
+    <span class="mob-active">Articles</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob-menu" id="mob-menu">
+    <a href="/index.html">Home</a>
+    <a href="/articles.html" class="active">Articles</a>
+    <a href="/categories.html">Categories</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/contact.html#subscribe" style="color:var(--green);">Subscribe &rarr;</a>
+  </nav>
+</header>
+
+<div class="wrap" style="padding-top:0;padding-bottom:64px;">
+  <div class="breadcrumb" id="art-breadcrumb">
+    <a href="/index.html">Home</a><span class="sep">/</span>
+    <a href="/articles.html">Articles</a><span class="sep">/</span>
+    <span class="current" id="art-breadcrumb-title">Loading&hellip;</span>
+  </div>
+  <div class="two-col">
+    <main class="main-col">
+
+      <!-- Article content loads here -->
+      <div id="article-main">
+        <div style="padding:60px 0;text-align:center;color:var(--muted);">Loading&hellip;</div>
+      </div>
+
+      <!-- Social bar (hidden until article loads) -->
+      <div class="social-bar" id="social-bar" style="display:none;">
+        <button class="social-btn like-btn" id="like-btn" onclick="likePost()">
+          &#9829; Like <span id="like-count">0</span>
+        </button>
+        <a class="social-btn share-tw" id="share-tw" href="#" target="_blank" onclick="trackShare('twitter')">
+          𝕏 Twitter
+        </a>
+        <a class="social-btn share-wa" id="share-wa" href="#" target="_blank" onclick="trackShare('whatsapp')">
+          &#128172; WhatsApp
+        </a>
+        <a class="social-btn share-li" id="share-li" href="#" target="_blank" onclick="trackShare('linkedin')">
+          in LinkedIn
+        </a>
+        <button class="social-btn share-cp" onclick="copyLink()">
+          &#128279; Copy Link
+        </button>
+        <div class="social-stat" id="social-stats"></div>
+      </div>
+
+      <!-- Comments section -->
+      <div class="comments-section" id="comments-section" style="display:none;">
+        <div class="comments-title">
+          Comments <span class="comments-count" id="comment-count">0</span>
+        </div>
+
+        <!-- New comment form -->
+        <div class="comment-form">
+          <h3>Leave a Comment</h3>
+          <div class="cf-row">
+            <input class="cf-input" id="cf-name" type="text" placeholder="Your name *"/>
+            <input class="cf-input" id="cf-email" type="email" placeholder="Your email * (not published)"/>
+          </div>
+          <textarea class="cf-textarea" id="cf-body" placeholder="Share your thoughts on this essay&hellip;"></textarea>
+          <button class="cf-submit" onclick="submitComment(null)">Post Comment</button>
+        </div>
+
+        <!-- Comment list -->
+        <div class="comment-list" id="comment-list">
+          <div class="empty-comments">Be the first to comment on this essay.</div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="bio-card reveal">
+        <div class="bio-hd">
+          <div class="bio-av"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+          <div><div class="bio-lbl">About the Founder</div><div class="bio-name">Kunle J. Adeboye</div></div>
+        </div>
+        <p><strong>Governance and public policy analyst</strong> exploring how leadership culture, democratic norms, and institutional performance shape Nigeria&rsquo;s outcomes.</p>
+        <a href="/about.html" class="bio-link">Read full bio &rarr;</a>
+      </div>
+      <div class="related-card reveal" id="sidebar-related">
+        <div class="related-lbl">More to Read</div>
+        <div id="sidebar-posts"><p style="color:var(--muted);font-size:.8rem;padding:12px 0;">Loading&hellip;</p></div>
+      </div>
+      <div class="nl-card reveal">
+        <div class="nl-title">Stay Informed</div>
+        <p>New essays, contributor calls, and occasional special features.</p>
+        <div class="nl-form">
+          <input type="text" placeholder="Full name"/>
+          <input type="email" placeholder="Email address"/>
+          <button type="button">Subscribe</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="/index.html" class="logo-link">
+        <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+        <div class="logo-text" style="margin-left:12px;"><div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div></div>
+      </a>
+      <p style="margin-top:14px;">Smart government. Real accountability. Better ideas for Nigeria&rsquo;s future.</p>
+      <div class="footer-social">
+        <a href="#" title="Twitter">𝕏</a><a href="#" title="LinkedIn">in</a><a href="#" title="Email">✉</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigate</h4>
+      <a href="/index.html">Home</a><a href="/articles.html">All Articles</a>
+      <a href="/categories.html">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Categories</h4>
+      <a href="/category-democracy.html">Democracy</a><a href="/category-leadership.html">Leadership</a>
+      <a href="/category-institutions.html">Institutions</a><a href="/category-reforms.html">Reforms</a>
+    </div>
+    <div class="footer-col"><h4>The Review</h4>
+      <a href="/about.html">Mission</a><a href="/contact.html">Contribute</a><a href="/contact.html#subscribe">Newsletter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Kunle J. Adeboye. All rights reserved.</span>
+    <span class="footer-brand-name">The Adeboye <span class="t2">Review</span></span>
+  </div>
+</footer>
+
+<button id="back-top" aria-label="Back to top">&#8679;</button>
+<script src="/js/main.js"></script>
+<script>
+var currentSlug = '';
+var currentPost = null;
+var likedPosts  = JSON.parse(localStorage.getItem('liked_posts') || '{}');
+
+// ── Load article ─────────────────────────────────────────────────
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  currentSlug = params.get('slug');
+  if(!currentSlug){
+    document.getElementById('article-main').innerHTML='<p style="padding:40px 0;color:var(--muted);">Article not found.</p>';
+    return;
+  }
+  API.getPost(currentSlug).then(function(res){
+    if(!res.success){
+      document.getElementById('article-main').innerHTML='<p style="padding:40px 0;color:var(--muted);">Article not found.</p>';
+      return;
+    }
+    currentPost = res.post;
+    var p = res.post;
+    document.title = p.title + ' | The Adeboye Review';
+    document.getElementById('art-breadcrumb-title').textContent = p.title.length>50 ? p.title.slice(0,50)+'…' : p.title;
+
+    var badge = p.is_new ? '<span class="badge badge-new">New</span>' : '';
+    var img   = p.image_url ? '<img class="article-hero-img" src="'+p.image_url+'" alt="'+esc(p.title)+'"/>' : '';
+    var catSlug = p.category.toLowerCase().replace(/ /g,'-');
+
+    // Build article HTML safely — set content separately to avoid apostrophe issues
+    var mainEl = document.getElementById('article-main');
+    mainEl.innerHTML =
+      '<div class="article-header">'
+      +'<div class="art-tag"><span class="badge badge-cat">'+esc(p.category)+'</span>'+badge+'</div>'
+      +'<h1 id="art-title"></h1>'
+      +'<div class="article-byline">'
+      +'<span class="author">Kunle J. Adeboye</span>'
+      +'<span style="color:var(--rule);">&middot;</span>'
+      +'<span>'+formatDate(p.created_at)+'</span>'
+      +'<span style="color:var(--rule);">&middot;</span>'
+      +'<span class="read-time">'+esc(p.read_time||'')+'</span>'
+      +'<span style="color:var(--rule);">&middot;</span>'
+      +'<span style="font-size:9px;color:var(--muted);">'+p.views+' views</span>'
+      +'</div></div>'
+      +(p.image_url ? '<img class="article-hero-img" id="art-hero-img" src="" alt=""/>' : '')
+      +'<blockquote class="article-standfirst" id="art-standfirst" style="'+(p.excerpt?'':'display:none')+'"></blockquote>'
+      +'<div class="article-body" id="art-body"></div>'
+      +'<div class="article-tags">'
+      +'<a href="/category-'+catSlug+'.html">'+esc(p.category)+'</a>'
+      +'<a href="/articles.html">Governance</a><a href="/articles.html">Nigeria</a></div>'
+      +'<div style="display:flex;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--rule);flex-wrap:wrap;">'
+      +'<a href="/articles.html" class="btn btn-outline-green">&larr; All Articles</a>'
+      +'<a href="/contact.html#subscribe" class="btn btn-green">Subscribe for more</a></div>';
+
+    // Set text/HTML content safely after DOM is built
+    document.getElementById('art-title').textContent = p.title;
+    if(p.image_url){ var hi=document.getElementById('art-hero-img'); if(hi){ hi.src=p.image_url; hi.alt=p.title; } }
+    if(p.excerpt){ var sf=document.getElementById('art-standfirst'); if(sf) sf.textContent=p.excerpt; }
+    // innerHTML is safe here — p.content is trusted HTML from our own DB
+    var ab=document.getElementById('art-body'); if(ab) ab.innerHTML = p.content;
+
+    // Show social bar
+    var sb = document.getElementById('social-bar');
+    sb.style.display = 'flex';
+    document.getElementById('like-count').textContent = p.likes || 0;
+    document.getElementById('social-stats').textContent = (p.shares||0)+' shares &middot; '+(p.views||0)+' views';
+
+    // Set share URLs
+    var url = encodeURIComponent(window.location.href);
+    var title = encodeURIComponent(p.title);
+    document.getElementById('share-tw').href = 'https://twitter.com/intent/tweet?url='+url+'&text='+title+'%20%7C%20The%20Adeboye%20Review';
+    document.getElementById('share-wa').href = 'https://wa.me/?text='+title+'%20'+url;
+    document.getElementById('share-li').href = 'https://www.linkedin.com/sharing/share-offsite/?url='+url;
+
+    // Liked state
+    if(likedPosts[currentSlug]){
+      document.getElementById('like-btn').classList.add('liked');
+    }
+
+    // Show comments
+    document.getElementById('comments-section').style.display = 'block';
+    loadComments();
+  });
+
+  // Sidebar posts
+  API.getPosts({limit:5}).then(function(res){
+    if(!res.success) return;
+    var el = document.getElementById('sidebar-posts');
+    el.innerHTML = res.posts.map(function(p,i){
+      return '<a href="/article.html?slug='+p.slug+'" class="related-item">'
+        +'<div class="ri-num">0'+(i+1)+'</div>'
+        +'<div><div class="ri-tag">'+esc(p.category)+'</div>'
+        +'<div class="ri-title">'+esc(p.title)+'</div>'
+        +'<div class="ri-date">'+formatDate(p.created_at)+'</div></div></a>';
+    }).join('');
+  });
+})();
+
+// ── Like post ─────────────────────────────────────────────────────
+function likePost(){
+  if(likedPosts[currentSlug]) return; // already liked
+  fetch('/api/posts/'+currentSlug+'/like', {method:'POST'})
+  .then(function(r){return r.json();})
+  .then(function(res){
+    if(res.success){
+      document.getElementById('like-count').textContent = res.likes;
+      document.getElementById('like-btn').classList.add('liked');
+      likedPosts[currentSlug] = true;
+      localStorage.setItem('liked_posts', JSON.stringify(likedPosts));
+    }
+  });
+}
+
+// ── Share tracking ────────────────────────────────────────────────
+function trackShare(platform){
+  fetch('/api/posts/'+currentSlug+'/share', {method:'POST'});
+}
+
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(function(){
+    var btn = event.target.closest('.share-cp');
+    if(btn){ btn.textContent='✓ Copied!'; setTimeout(function(){ btn.innerHTML='&#128279; Copy Link'; },2000); }
+    trackShare('copy');
+  });
+}
+
+// ── Comments ──────────────────────────────────────────────────────
+var likedComments = JSON.parse(localStorage.getItem('liked_comments') || '{}');
+
+function loadComments(){
+  fetch('/api/posts/'+currentSlug+'/comments')
+  .then(function(r){return r.json();})
+  .then(function(res){
+    if(!res.success) return;
+    var comments = res.comments;
+    document.getElementById('comment-count').textContent = comments.reduce(function(a,c){return a+1+(c.replies?c.replies.length:0);},0);
+    var list = document.getElementById('comment-list');
+    if(!comments.length){
+      list.innerHTML = '<div class="empty-comments">Be the first to comment on this essay.</div>';
+      return;
+    }
+    list.innerHTML = comments.map(function(c){ return renderComment(c, false); }).join('');
+  });
+}
+
+function renderComment(c, isReply){
+  var initial = (c.author_name||'?').charAt(0).toUpperCase();
+  var liked   = likedComments[c.id] ? 'liked' : '';
+  var replyBtn = isReply ? '' : '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">Reply</button>';
+  var repliesHtml = '';
+  if(!isReply && c.replies && c.replies.length){
+    repliesHtml = '<div class="replies">'+c.replies.map(function(r){ return renderComment(r, true); }).join('')+'</div>';
+  }
+  var replyForm = isReply ? '' :
+    '<div class="reply-form" id="reply-form-'+c.id+'">'
+    +'<input class="cf-input" id="rf-name-'+c.id+'" type="text" placeholder="Your name *" style="margin-bottom:8px;"/>'
+    +'<input class="cf-input" id="rf-email-'+c.id+'" type="email" placeholder="Email *" style="margin-bottom:8px;"/>'
+    +'<textarea class="cf-textarea" id="rf-body-'+c.id+'" placeholder="Write a reply&hellip;" style="min-height:70px;"></textarea>'
+    +'<button class="cf-submit" onclick="submitComment(\'' + c.id + '\')" style="margin-top:8px;">Post Reply</button></div>';
+
+  return '<div class="comment-item" id="comment-'+c.id+'">'
+    +'<div class="comment-head">'
+    +'<div class="comment-avatar" style="background:'+avatarColor(c.author_name)+'">'+initial+'</div>'
+    +'<div><div class="comment-author">'+esc(c.author_name)+'</div>'
+    +'<div class="comment-date">'+formatDate(c.created_at)+'</div></div></div>'
+    +'<div class="comment-body">'+esc(c.body)+'</div>'
+    +'<div class="comment-actions">'
+    +'<button class="comment-like-btn '+liked+'" id="clb-'+c.id+'" onclick="likeComment(\'' + c.id + '\')">'
+    +'&#9829; '+(c.likes||0)+'</button>'
+    +replyBtn+'</div>'
+    +replyForm
+    +repliesHtml
+    +'</div>';
+}
+
+function avatarColor(name){
+  var colors=['#152244','#1b5c2e','#8b3a2a','#2c5f8a','#5a3a8a','#8a5a2a'];
+  var i=0; for(var j=0;j<name.length;j++) i+=name.charCodeAt(j);
+  return colors[i%colors.length];
+}
+
+function toggleReplyForm(commentId){
+  var form = document.getElementById('reply-form-'+commentId);
+  if(form) form.classList.toggle('open');
+}
+
+function submitComment(parentId){
+  var name, email, body;
+  if(parentId){
+    name  = document.getElementById('rf-name-'+parentId).value.trim();
+    email = document.getElementById('rf-email-'+parentId).value.trim();
+    body  = document.getElementById('rf-body-'+parentId).value.trim();
+  } else {
+    name  = document.getElementById('cf-name').value.trim();
+    email = document.getElementById('cf-email').value.trim();
+    body  = document.getElementById('cf-body').value.trim();
+  }
+  if(!name||!email||!body){ alert('Please fill in all fields.'); return; }
+
+  var payload = { author_name:name, author_email:email, body:body };
+  if(parentId) payload.parent_id = parentId;
+
+  fetch('/api/posts/'+currentSlug+'/comments', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  }).then(function(r){return r.json();})
+  .then(function(res){
+    if(res.success){
+      if(!parentId){
+        document.getElementById('cf-name').value='';
+        document.getElementById('cf-email').value='';
+        document.getElementById('cf-body').value='';
+      }
+      loadComments(); // Reload all comments
+    } else { alert('Error posting comment. Please try again.'); }
+  });
+}
+
+function likeComment(id){
+  if(likedComments[id]) return;
+  fetch('/api/comments/'+id+'/like', {method:'POST'})
+  .then(function(r){return r.json();})
+  .then(function(res){
+    if(res.success){
+      likedComments[id]=true;
+      localStorage.setItem('liked_comments',JSON.stringify(likedComments));
+      var btn=document.getElementById('clb-'+id);
+      if(btn){ btn.classList.add('liked'); btn.innerHTML='&#9829; '+res.likes; }
+    }
+  });
+}
+</script>
+</body>
+</html>

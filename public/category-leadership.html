@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+  <!-- SEO: Page Title -->
+  <title>Political Leadership, Ethics & Governance Analysis | The Adeboye Review</title>
+
+  <!-- SEO: Meta Description -->
+  <meta name="description" content="Critical commentary on political leadership and decision-making. We examine the ethics, power dynamics, and accountability of those in power."/>
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:title" content="Political Leadership, Ethics & Governance Analysis | The Adeboye Review"/>
+  <meta property="og:description" content="Critical commentary on political leadership and decision-making. We examine the ethics, power dynamics, and accountability of those in power."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="The Adeboye Review"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Political Leadership, Ethics & Governance Analysis | The Adeboye Review"/>
+  <meta name="twitter:description" content="Critical commentary on political leadership and decision-making. We examine the ethics, power dynamics, and accountability of those in power."/>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://adeboye.onrender.com/category-leadership.html"/>
+
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" type="image/png" href="/img/logo.png"/>
+
+  <style>
+    /* Category hero */
+    .cat-hero {
+      background: var(--navy);
+      padding: 64px 48px 48px;
+      position: relative; overflow: hidden;
+    }
+    .cat-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -40px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(27,92,46,.1);
+    }
+    .cat-hero::after {
+      content: '';
+      position: absolute; bottom: -80px; left: 60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(184,150,46,.06);
+    }
+    .cat-hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 1; }
+    .cat-hero-emoji { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+    /* H1 — SEO primary heading */
+    .cat-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    /* H2 — SEO subheader / tagline */
+    .cat-hero h2 {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 400;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 24px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .cat-hero-accent {
+      width: 56px; height: 3px;
+      background: linear-gradient(90deg, #152244, var(--gold));
+      margin-bottom: 24px;
+    }
+    /* Body copy */
+    .cat-hero-body {
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,.7);
+      max-width: 640px;
+    }
+    /* Stat bar */
+    .cat-stat-bar {
+      max-width: 1200px; margin: 0 auto;
+      padding: 16px 48px;
+      background: #152244;
+      display: flex; align-items: center; gap: 24px;
+      border-bottom: 3px solid var(--gold);
+      flex-wrap: wrap;
+    }
+    .cat-stat-item {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .cat-stat-item strong { color: #fff; font-size: 13px; }
+    .cat-stat-sep { color: rgba(255,255,255,.3); }
+
+    /* Article grid */
+    .cat-content { max-width: 1200px; margin: 0 auto; padding: 52px 48px 64px; }
+    .cat-section-label {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 32px;
+    }
+    .cat-section-label span {
+      font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800;
+      letter-spacing: .3em; text-transform: uppercase; color: #152244;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .cat-section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center; padding: 60px 20px;
+      font-family: 'Georgia', serif; font-style: italic;
+      color: var(--muted); font-size: 1rem;
+    }
+    .empty-state a {
+      display: inline-block; margin-top: 16px;
+      font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      background: var(--navy); color: #fff; padding: 10px 20px;
+      text-decoration: none;
+    }
+
+    /* Other categories */
+    .other-cats {
+      background: var(--offbg);
+      padding: 48px;
+      max-width: 1200px; margin: 0 auto;
+      border-top: 1px solid var(--rule);
+    }
+    .other-cats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--rule); border: 1px solid var(--rule);
+      margin-top: 24px;
+    }
+    @media(max-width:700px){
+      .cat-hero { padding: 40px 16px 32px; }
+      .cat-hero-inner { padding: 0; }
+      .cat-stat-bar { padding: 12px 16px; gap: 14px; }
+      .cat-content { padding: 32px 16px 48px; }
+      .other-cats { padding: 32px 16px; }
+      .other-cats-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<div class="topbar">
+  <span>Policy &middot; Democracy &middot; Institutions &middot; Leadership</span>
+  <span class="topbar-date">The Adeboye Review &mdash; 2026</span>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/index.html" class="logo-link">
+      <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+      <div class="logo-text">
+        <div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div>
+        <div class="tagline">Smart government. Real accountability.</div>
+      </div>
+    </a>
+    <nav class="site-nav"><a href="/index.html">Home</a><a href="/articles.html">Articles</a><a href="/categories.html" class="active">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav>
+    <div class="header-actions">
+      <a href="/contact.html#subscribe" class="btn-subscribe">Subscribe</a>
+    </div>
+  </div>
+  <div class="mob-bar">
+    <span class="mob-active">Categories</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob-menu" id="mob-menu"><a href="/index.html">Home</a><a href="/articles.html">Articles</a><a href="/categories.html" class="active">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/contact.html#subscribe" style="color:var(--green);">Subscribe &rarr;</a></nav>
+</header>
+
+<!-- CATEGORY HERO with SEO H1, H2, body copy -->
+<div class="cat-hero">
+  <div class="cat-hero-inner">
+    <span class="cat-hero-emoji">👥</span>
+    <div class="cat-hero-accent"></div>
+
+    <!-- H1 — Primary SEO Heading -->
+    <h1>Leadership</h1>
+
+    <!-- H2 — SEO Subheader / Tagline -->
+    <h2>Power, ethics, and accountability.</h2>
+
+    <!-- Body Copy — SEO descriptive text -->
+    <p class="cat-hero-body">Shifting the focus to the individuals holding power. This section provides critical analysis of leadership decisions, ethics, and the political will required to shape our collective future.</p>
+  </div>
+</div>
+
+<!-- Stat bar -->
+<div class="cat-stat-bar">
+  <div class="cat-stat-item">
+    <strong id="article-count">—</strong> Essays Published
+  </div>
+  <span class="cat-stat-sep">&middot;</span>
+  <div class="cat-stat-item">
+    Category: <strong>Leadership</strong>
+  </div>
+  <span class="cat-stat-sep">&middot;</span>
+  <div class="cat-stat-item">
+    <strong>The Adeboye Review</strong>
+  </div>
+</div>
+
+<!-- Breadcrumb -->
+<div style="max-width:1200px;margin:0 auto;padding:0 48px;">
+  <div class="breadcrumb">
+    <a href="/index.html">Home</a><span class="sep">/</span>
+    <a href="/categories.html">Categories</a><span class="sep">/</span>
+    <span class="current">Leadership</span>
+  </div>
+</div>
+
+<!-- Articles -->
+<div class="cat-content">
+  <div class="cat-section-label"><span>Essays in Leadership</span></div>
+  <div id="cat-articles" class="article-grid">
+    <p style="color:var(--muted);padding:20px 0;font-family:Georgia,serif;font-style:italic;">Loading essays&hellip;</p>
+  </div>
+  <div style="margin-top:40px;padding-top:28px;border-top:1px solid var(--rule);display:flex;gap:12px;flex-wrap:wrap;">
+    <a href="/categories.html" class="btn btn-outline-green">&larr; All Categories</a>
+    <a href="/articles.html" class="btn btn-navy">All Articles</a>
+    <a href="/contact.html#subscribe" class="btn btn-green">Subscribe</a>
+  </div>
+</div>
+
+<!-- Other categories -->
+<div class="other-cats">
+  <div class="cat-section-label"><span>Other Categories</span></div>
+  <div class="other-cats-grid">
+    <a href="/category-democracy.html" class="cat-card"><div class="cat-num">01</div><div class="cat-name">Democracy</div><div class="cat-desc">Power to the people, in practice.</div><div class="cat-arrow">Explore &rarr;</div></a><a href="/category-institutions.html" class="cat-card"><div class="cat-num">03</div><div class="cat-name">Institutions</div><div class="cat-desc">The pillars that hold society together.</div><div class="cat-arrow">Explore &rarr;</div></a><a href="/category-reforms.html" class="cat-card"><div class="cat-num">04</div><div class="cat-name">Reforms</div><div class="cat-desc">Fixing the broken systems.</div><div class="cat-arrow">Explore &rarr;</div></a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="/index.html" class="logo-link">
+        <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+        <div class="logo-text" style="margin-left:12px;"><div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div></div>
+      </a>
+      <p style="margin-top:14px;">Smart government. Real accountability. Better ideas for Nigeria&rsquo;s future.</p>
+      <div class="footer-social">
+        <a href="#" title="Twitter">𝕏</a><a href="#" title="LinkedIn">in</a><a href="#" title="Email">✉</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigate</h4>
+      <a href="/index.html">Home</a><a href="/articles.html">All Articles</a>
+      <a href="/categories.html">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Categories</h4>
+      <a href="/category-democracy.html">🏛️ Democracy</a>
+      <a href="/category-leadership.html">👥 Leadership</a>
+      <a href="/category-institutions.html">🏢 Institutions</a>
+      <a href="/category-reforms.html">⚙️ Reforms</a>
+    </div>
+    <div class="footer-col"><h4>The Review</h4>
+      <a href="/about.html">Mission</a>
+      <a href="/contact.html">Contribute</a>
+      <a href="/contact.html#subscribe">Newsletter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Kunle J. Adeboye. All rights reserved.</span>
+    <span class="footer-brand-name">The Adeboye <span class="t2">Review</span></span>
+  </div>
+</footer>
+
+<button id="back-top" aria-label="Back to top">&#8679;</button>
+<script src="/js/main.js"></script>
+<script>
+API.getPosts({category: 'Leadership'}).then(function(res){
+  var el = document.getElementById('cat-articles');
+  var countEl = document.getElementById('article-count');
+  if(!res.success || !res.posts.length){
+    el.innerHTML = '<div class="empty-state"><p>No essays in this category yet.</p><p style="margin-top:8px;font-size:.85rem;">Check back soon — new writing is added regularly.</p><a href="/articles.html">Browse All Essays</a></div>';
+    if(countEl) countEl.textContent = '0';
+    return;
+  }
+  if(countEl) countEl.textContent = res.posts.length;
+  el.innerHTML = res.posts.map(function(p){ return articleCardHTML(p); }).join('');
+});
+</script>
+</body>
+</html>

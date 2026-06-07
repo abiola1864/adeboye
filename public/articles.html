@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>All Essays & Articles | The Adeboye Review</title>
+  <!-- SEO: Page Title (set in <title> tag above) -->
+  <!-- SEO: Meta Description -->
+  <meta name="description" content="Browse all essays on Nigerian governance, democracy, leadership, institutional reform, and public policy. Evidence-driven analysis by Kunle J. Adeboye."/>
+  <meta name="keywords" content="Nigeria governance, democracy Nigeria, Nigerian institutions, public policy Nigeria, Kunle Adeboye, governance reform Nigeria"/>
+  <meta name="author" content="Kunle J. Adeboye"/>
+  <meta name="robots" content="index, follow"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="All Essays & Articles | The Adeboye Review"/>
+  <meta property="og:description" content="Browse all essays on Nigerian governance, democracy, leadership, institutional reform, and public policy. Evidence-driven analysis by Kunle J. Adeboye."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="The Adeboye Review"/>
+  <meta property="og:image" content="https://adeboye.onrender.com/img/logo.png"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="All Essays & Articles | The Adeboye Review"/>
+  <meta name="twitter:description" content="Browse all essays on Nigerian governance, democracy, leadership, institutional reform, and public policy. Evidence-driven analysis by Kunle J. Adeboye."/>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://adeboye.onrender.com/articles.html"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" type="image/png" href="/img/logo.png"/>
+  
+</head>
+<body>
+<div id="progress-bar"></div>
+<div class="topbar">
+  <span>Policy &middot; Democracy &middot; Institutions &middot; Leadership</span>
+  <span class="topbar-date">The Adeboye Review &mdash; 2026</span>
+</div>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/index.html" class="logo-link">
+      <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+      <div class="logo-text">
+        <div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div>
+        <div class="tagline">Smart government. Real accountability.</div>
+      </div>
+    </a>
+    <nav class="site-nav"><a href="/index.html">Home</a><a href="/articles.html" class="active">Articles</a><a href="/categories.html">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav>
+    <div class="header-actions">
+      <a href="/contact.html#subscribe" class="btn-subscribe">Subscribe</a>
+    </div>
+  </div>
+  <div class="mob-bar">
+    <span class="mob-active">Articles</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob-menu" id="mob-menu"><a href="/index.html">Home</a><a href="/articles.html" class="active">Articles</a><a href="/categories.html">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/contact.html#subscribe" style="color:var(--green);">Subscribe &rarr;</a></nav>
+</header>
+
+<div class="page-hero fade-up">
+  <h1>All <span>Articles</span></h1>
+  <p>Evidence-driven essays on governance, leadership, institutions, and public policy in Nigeria.</p>
+  <div class="page-hero-line"></div>
+</div>
+<div class="wrap" style="padding-top:48px;padding-bottom:64px;">
+  <div id="cat-filters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+    <button onclick="filterPosts(null)" class="filter-btn active" data-cat="">All</button>
+    <button onclick="filterPosts('Democracy')" class="filter-btn" data-cat="Democracy">Democracy</button>
+    <button onclick="filterPosts('Leadership')" class="filter-btn" data-cat="Leadership">Leadership</button>
+    <button onclick="filterPosts('Institutions')" class="filter-btn" data-cat="Institutions">Institutions</button>
+    <button onclick="filterPosts('Reforms')" class="filter-btn" data-cat="Reforms">Reforms</button>
+  </div>
+  <div id="articles-grid" class="article-grid">
+    <p style="color:var(--muted);padding:20px 0;">Loading articles&hellip;</p>
+  </div>
+</div>
+<style>
+.filter-btn{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--rule);background:#fff;color:var(--muted);cursor:pointer;border-radius:2px;transition:all .2s;}
+.filter-btn:hover,.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+</style>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="/index.html" class="logo-link">
+        <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+        <div class="logo-text" style="margin-left:12px;"><div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div></div>
+      </a>
+      <p style="margin-top:14px;">Smart government. Real accountability. Better ideas for Nigeria&rsquo;s future.</p>
+      <div class="footer-social">
+        <a href="#" title="Twitter">𝕏</a><a href="#" title="LinkedIn">in</a><a href="#" title="Email">✉</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigate</h4>
+      <a href="/index.html">Home</a><a href="/articles.html">All Articles</a>
+      <a href="/categories.html">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Categories</h4>
+      <a href="/category-democracy.html">Democracy</a><a href="/category-leadership.html">Leadership</a>
+      <a href="/category-institutions.html">Institutions</a><a href="/category-reforms.html">Reforms</a>
+    </div>
+    <div class="footer-col"><h4>The Review</h4>
+      <a href="/about.html">Mission</a><a href="/about.html#editorial">Editorial Approach</a>
+      <a href="/contact.html">Contribute</a><a href="/contact.html#subscribe">Newsletter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Kunle J. Adeboye. All rights reserved.</span>
+    <span class="footer-brand-name">The Adeboye <span class="t2">Review</span></span>
+  </div>
+</footer>
+<button id="back-top" aria-label="Back to top">&#8679;</button>
+<script src="/js/main.js"></script>
+<script>
+var allPosts=[];
+API.getPosts().then(function(res){
+  allPosts = res.success ? res.posts : [];
+  renderArticles(allPosts);
+});
+function renderArticles(posts){
+  var el=document.getElementById('articles-grid');
+  if(!posts.length){el.innerHTML='<p style="color:var(--muted);padding:20px 0;">No articles found.</p>';return;}
+  el.innerHTML=posts.map(function(p){return articleCardHTML(p);}).join('');
+}
+function filterPosts(cat){
+  document.querySelectorAll('.filter-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.cat===(cat||''));
+  });
+  renderArticles(cat ? allPosts.filter(function(p){return p.category===cat;}) : allPosts);
+}
+</script>
+</body>
+</html>

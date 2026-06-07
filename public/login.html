@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Admin Login | The Adeboye Review</title>
+  <link rel="icon" type="image/png" href="/img/logo.png"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',sans-serif;background:#f0f2f5;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+    .login-card{background:#fff;border-radius:8px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 8px 40px rgba(0,0,0,0.1);}
+    .login-logo{display:flex;align-items:center;gap:14px;margin-bottom:32px;justify-content:center;}
+    .login-logo img{width:56px;height:56px;border-radius:50%;border:2px solid #1b5c2e;filter:hue-rotate(-38deg) saturate(1.4);}
+    .login-logo-text{font-family:'Montserrat','Segoe UI',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;letter-spacing:-.01em;}
+    .login-logo-text .t1{color:#152244;}
+    .login-logo-text .t2{color:#1b5c2e;}
+    h2{font-family:'Montserrat','Segoe UI',sans-serif;font-size:.95rem;font-weight:700;text-align:center;color:#152244;margin-bottom:28px;letter-spacing:.04em;text-transform:uppercase;}
+    label{display:block;font-family:'Montserrat','Segoe UI',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#152244;margin-bottom:6px;}
+    input[type=password]{width:100%;padding:12px 14px;border:1px solid #e4e0d8;border-radius:4px;font-size:14px;outline:none;transition:border .2s;margin-bottom:20px;}
+    input[type=password]:focus{border-color:#1b5c2e;}
+    button{width:100%;background:#1b5c2e;color:#fff;border:none;padding:13px;border-radius:4px;font-family:'Montserrat','Segoe UI',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+    button:hover{background:#236b38;}
+    .error{color:#e53e3e;font-size:12px;text-align:center;margin-top:14px;display:none;font-family:'Montserrat',sans-serif;}
+    @media(max-width:480px){.login-card{padding:32px 20px;margin:16px;}}
+  </style>
+</head>
+<body>
+<div class="login-card">
+  <div class="login-logo">
+    <img src="/img/logo.png" alt="KJA"/>
+    <div class="login-logo-text">
+      <span class="t1">The Adeboye </span><span class="t2">Review</span>
+    </div>
+  </div>
+  <h2>Admin Access</h2>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" id="pw" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')login()"/>
+  </div>
+  <button onclick="login()">Sign In &rarr;</button>
+  <p class="error" id="err">Incorrect password. Please try again.</p>
+</div>
+<script>
+function login(){
+  var pw=document.getElementById('pw').value;
+  fetch('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw})})
+  .then(function(r){return r.json();})
+  .then(function(res){
+    if(res.success) window.location.href='/admin.html';
+    else document.getElementById('err').style.display='block';
+  });
+}
+</script>
+</body>
+</html>

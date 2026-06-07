@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Public Policy Essays | The Adeboye Review</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="icon" type="image/png" href="/img/logo.png"/>
+  
+</head>
+<body>
+<div id="progress-bar"></div>
+<div class="topbar">
+  <span>Policy &middot; Democracy &middot; Institutions &middot; Leadership</span>
+  <span class="topbar-date">The Adeboye Review &mdash; 2026</span>
+</div>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/index.html" class="logo-link">
+      <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+      <div class="logo-text">
+        <div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div>
+        <div class="tagline">Smart government. Real accountability.</div>
+      </div>
+    </a>
+    <nav class="site-nav"><a href="/index.html">Home</a><a href="/articles.html">Articles</a><a href="/categories.html" class="active">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav>
+    <div class="header-actions">
+      <a href="/contact.html#subscribe" class="btn-subscribe">Subscribe</a>
+    </div>
+  </div>
+  <div class="mob-bar">
+    <span class="mob-active">Categories</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mob-menu" id="mob-menu"><a href="/index.html">Home</a><a href="/articles.html">Articles</a><a href="/categories.html" class="active">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/contact.html#subscribe" style="color:var(--green);">Subscribe &rarr;</a></nav>
+</header>
+
+<div class="page-hero fade-up">
+  <h1><span>Public Policy</span></h1>
+  <p>Analysis of policy design, implementation, and impact in Nigeria.</p>
+  <div class="page-hero-line"></div>
+</div>
+<div class="wrap" style="padding-top:48px;padding-bottom:64px;">
+  <div class="breadcrumb">
+    <a href="/index.html">Home</a><span class="sep">/</span>
+    <a href="/categories.html">Categories</a><span class="sep">/</span>
+    <span class="current">Public Policy</span>
+  </div>
+  <div id="cat-articles" class="article-grid" style="margin-top:36px;">
+    <p style="color:var(--muted);padding:20px 0;">Loading&hellip;</p>
+  </div>
+  <div style="margin-top:36px;padding-top:28px;border-top:1px solid var(--rule);">
+    <a href="/categories.html" class="btn btn-outline-green">&larr; All Categories</a>
+    <a href="/articles.html" class="btn btn-navy" style="margin-left:12px;">All Articles</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="/index.html" class="logo-link">
+        <div class="logo-ring"><img src="/img/logo.png" alt="KJA"/></div>
+        <div class="logo-text" style="margin-left:12px;"><div class="site-name"><span class="t1">The Adeboye&nbsp;</span><span class="t2">Review</span></div></div>
+      </a>
+      <p style="margin-top:14px;">Smart government. Real accountability. Better ideas for Nigeria&rsquo;s future.</p>
+      <div class="footer-social">
+        <a href="#" title="Twitter">𝕏</a><a href="#" title="LinkedIn">in</a><a href="#" title="Email">✉</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigate</h4>
+      <a href="/index.html">Home</a><a href="/articles.html">All Articles</a>
+      <a href="/categories.html">Categories</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Categories</h4>
+      <a href="/category-democracy.html">Democracy</a><a href="/category-leadership.html">Leadership</a>
+      <a href="/category-institutions.html">Institutions</a><a href="/category-policy.html">Public Policy</a>
+    </div>
+    <div class="footer-col"><h4>The Review</h4>
+      <a href="/about.html">Mission</a><a href="/about.html#editorial">Editorial Approach</a>
+      <a href="/contact.html">Contribute</a><a href="/contact.html#subscribe">Newsletter</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Kunle J. Adeboye. All rights reserved.</span>
+    <span class="footer-brand-name">The Adeboye <span class="t2">Review</span></span>
+  </div>
+</footer>
+<button id="back-top" aria-label="Back to top">&#8679;</button>
+<script src="/js/main.js"></script>
+<script>
+API.getPosts({category:'Public Policy'}).then(function(res){
+  var el=document.getElementById('cat-articles');
+  if(!res.success||!res.posts.length){el.innerHTML='<p style="color:var(--muted);padding:20px 0;">No articles in this category yet.</p>';return;}
+  el.innerHTML=res.posts.map(function(p){return articleCardHTML(p);}).join('');
+});
+</script>
+</body>
+</html>
