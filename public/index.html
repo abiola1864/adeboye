@@ -97,32 +97,66 @@
       color: rgba(255,255,255,.5);
     }
 
-    /* Mission ticker */
-    .hp-ticker {
+    /* Recent articles strip */
+    .recent-strip {
       background: var(--navy);
-      padding: 10px 0;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      border-bottom: 3px solid var(--gold);
     }
-    .hp-ticker-inner {
-      display: flex; gap: 48px;
-      animation: ticker 30s linear infinite;
-      white-space: nowrap;
+    .recent-strip-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 48px;
+      display: flex; align-items: stretch; gap: 0;
+      min-height: 52px;
     }
-    .hp-ticker-inner:hover { animation-play-state: paused; }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .hp-ticker-item {
+    .recent-strip-label {
       font-family: 'Montserrat', sans-serif;
-      font-size: 9px; font-weight: 700;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: rgba(255,255,255,.4);
+      font-size: 9px; font-weight: 800;
+      letter-spacing: .24em; text-transform: uppercase;
+      color: #fff; background: var(--green);
+      padding: 0 20px;
+      display: flex; align-items: center;
+      flex-shrink: 0; white-space: nowrap;
+      margin-right: 0;
+    }
+    .recent-strip-items {
+      display: flex; align-items: center;
+      gap: 0; flex: 1; overflow: hidden;
+    }
+    .recent-strip-link {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .04em;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      padding: 0 20px;
+      display: flex; align-items: center; gap: 8px;
+      height: 100%; min-height: 52px;
+      border-right: 1px solid rgba(255,255,255,.08);
+      transition: all .2s;
+      white-space: nowrap; overflow: hidden;
+      text-overflow: ellipsis; max-width: 320px;
+    }
+    .recent-strip-link:hover {
+      background: rgba(255,255,255,.06);
+      color: #fff;
+    }
+    .recent-strip-link .rs-badge {
+      background: var(--green); color: #fff;
+      font-size: 7px; font-weight: 800;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 2px 6px; border-radius: 2px;
+      flex-shrink: 0;
+      animation: pulse-badge 2s infinite;
+    }
+    .recent-strip-link .rs-cat {
+      color: var(--gold); font-size: 8px;
+      letter-spacing: .14em; text-transform: uppercase;
       flex-shrink: 0;
     }
-    .hp-ticker-item .dot {
-      color: var(--gold); margin-right: 48px;
+    @media(max-width:700px) {
+      .recent-strip-inner { padding: 0; }
+      .recent-strip-label { padding: 0 14px; font-size: 8px; }
+      .recent-strip-link { padding: 0 12px; font-size: 9px; max-width: 200px; }
+      .recent-strip-link:nth-child(n+3) { display: none; }
     }
 
     /* Main layout */
@@ -435,8 +469,8 @@
   <div class="hp-hero-inner">
     <div>
       <div class="hp-hero-eyebrow">Independent Governance Commentary &mdash; Nigeria</div>
-      <h1>Clear ideas for <em>stronger governance</em> and democratic accountability</h1>
-      <p class="hp-hero-sub">Evidence-driven analysis of democracy, leadership, institutions, and governance reforms in Nigeria. A space for clarity, accountability, and stronger public thinking.</p>
+      <h1>Smart government. Real accountability. <em>Better ideas</em> for Nigeria&rsquo;s future.</h1>
+      <p class="hp-hero-sub">Insight-led clarity for stronger governance and institutions. Evidence-driven analysis of democracy, leadership, and institutional performance in Nigeria.</p>
       <div class="hp-hero-btns">
         <a href="/articles.html" class="btn btn-white">Start Reading</a>
         <a href="/contact.html#subscribe" class="btn btn-ghost">Subscribe for Updates</a>
@@ -459,17 +493,13 @@
   </div>
 </div>
 
-<!-- TICKER -->
-<div class="hp-ticker">
-  <div class="hp-ticker-inner">
-    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Democracy &mdash; Power to the people, in practice</span>
-    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Leadership &mdash; Power, ethics, and accountability</span>
-    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Institutions &mdash; The pillars that hold society together</span>
-    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Reforms &mdash; Fixing the broken systems</span>
-    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Democracy &mdash; Power to the people, in practice</span>
-    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Leadership &mdash; Power, ethics, and accountability</span>
-    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Institutions &mdash; The pillars that hold society together</span>
-    <span class="hp-ticker-item"><span class="dot">&#9670;</span> Reforms &mdash; Fixing the broken systems</span>
+<!-- RECENT ARTICLES STRIP -->
+<div class="recent-strip">
+  <div class="recent-strip-inner">
+    <div class="recent-strip-label">Recent</div>
+    <div class="recent-strip-items" id="recent-strip-items">
+      <span style="color:rgba(255,255,255,.4);font-size:.75rem;font-family:Georgia,serif;font-style:italic;">Loading&hellip;</span>
+    </div>
   </div>
 </div>
 
@@ -524,8 +554,8 @@
         <a href="/category-reforms.html" class="hp-cat">
           <span class="hp-cat-emoji">&#9881;&#65039;</span>
           <div class="hp-cat-num">04</div>
-          <div class="hp-cat-name">Reforms</div>
-          <div class="hp-cat-tagline">Fixing the broken systems.</div>
+          <div class="hp-cat-name">Reform Agenda</div>
+          <div class="hp-cat-tagline">Analysis of policy design, implementation, and real-world impact.</div>
           <div class="hp-cat-desc">Legislative overhauls, structural changes, and the practical blueprints needed to modernise governance.</div>
           <div class="hp-cat-arrow">Explore &rarr;</div>
         </a>
@@ -547,13 +577,15 @@
 
       <div class="hp-bio reveal">
         <div class="hp-bio-hd">
-          <div class="hp-bio-av"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+          <div style="width:50px;height:50px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--gold);">
+          <img src="/img/kunle-adeboye.jpg" alt="Kunle J. Adeboye" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:hue-rotate(0deg);"/>
+        </div>
           <div>
             <div class="hp-bio-lbl">About the Founder</div>
             <div class="hp-bio-name">Kunle J. Adeboye</div>
           </div>
         </div>
-        <p><strong>Governance and public policy analyst</strong> exploring how leadership culture, democratic norms, and institutional performance shape Nigeria&rsquo;s governance outcomes &mdash; and what reforms can strengthen public trust.</p>
+        <p><strong>Kunle J. Adeboye</strong> is a governance and public policy analyst and committed reform advocate who examines how leadership culture, democratic norms, and institutional performance shape Nigeria&rsquo;s future.</p>
         <a href="/about.html" class="hp-bio-link">Read full bio &rarr;</a>
       </div>
 
@@ -604,7 +636,7 @@
       <a href="/category-democracy.html">&#127963;&#65039; Democracy</a>
       <a href="/category-leadership.html">&#128101; Leadership</a>
       <a href="/category-institutions.html">&#127970; Institutions</a>
-      <a href="/category-reforms.html">&#9881;&#65039; Reforms</a>
+      <a href="/category-reforms.html">&#9881;&#65039; Reform Agenda</a>
     </div>
     <div class="footer-col"><h4>The Review</h4>
       <a href="/about.html">Mission &amp; Purpose</a>
@@ -622,49 +654,79 @@
 <button id="back-top" aria-label="Back to top">&#8679;</button>
 <script src="/js/main.js"></script>
 <script>
-// Load essays — newest first, NEW badge on recent ones
-API.getPosts({ limit: 5 }).then(function(res) {
-  var countEl = document.getElementById('hero-post-count');
-  var el = document.getElementById('hp-essays');
-  if (!res.success || !res.posts.length) {
-    el.innerHTML = '<p style="padding:20px 0;color:var(--muted);font-family:Georgia,serif;font-style:italic;">No essays published yet.</p>';
-    if (countEl) countEl.textContent = '0';
-    return;
-  }
-  var posts = res.posts.sort(function(a,b){ return new Date(b.created_at)-new Date(a.created_at); });
-  if (countEl) countEl.textContent = posts.length;
-  el.innerHTML = posts.map(function(p) {
-    var img = p.image_url
-      ? '<img src="'+p.image_url+'" alt=""/>'
-      : '<div class="hp-thumb-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>';
-    var badge = p.is_new ? '<span class="badge badge-new">New</span>' : '';
-    var newClass = p.is_new ? ' is-new' : '';
-    return '<a href="/article.html?slug='+p.slug+'" class="hp-essay'+newClass+'">'
-      +'<div class="hp-thumb">'+img+'</div>'
-      +'<div>'
-      +'<div class="hp-essay-meta"><span class="hp-essay-cat">'+esc(p.category)+'</span>'+badge+'</div>'
-      +'<div class="hp-essay-title">'+esc(p.title)+'</div>'
-      +'<div class="hp-essay-teaser">'+esc(p.excerpt||'')+'</div>'
-      +'<div class="hp-essay-foot">'
-      +'<span class="hp-essay-date">'+formatDate(p.created_at)+' &middot; '+esc(p.read_time||'')+'</span>'
-      +'<span class="hp-read-link">Read Essay &rarr;</span>'
-      +'</div></div></a>';
-  }).join('');
-});
-
-// Sidebar recent
-API.getPosts({ limit: 5 }).then(function(res) {
-  var el = document.getElementById('hp-recent-posts');
+// Shared fetch — used by essays + sidebar + strip
+API.getPosts({ limit: 10 }).then(function(res) {
   if (!res.success) return;
-  var posts = res.posts.sort(function(a,b){ return new Date(b.created_at)-new Date(a.created_at); });
-  el.innerHTML = posts.map(function(p, i) {
-    var badge = p.is_new ? '<span class="badge badge-new" style="font-size:7px;padding:2px 5px;">New</span>' : '';
-    return '<a href="/article.html?slug='+p.slug+'" class="hp-recent-item">'
-      +'<div class="hp-recent-num">0'+(i+1)+'</div>'
-      +'<div><div class="hp-recent-cat">'+esc(p.category)+' '+badge+'</div>'
-      +'<div class="hp-recent-title">'+esc(p.title)+'</div>'
-      +'<div class="hp-recent-date">'+formatDate(p.created_at)+'</div></div></a>';
-  }).join('');
+
+  // Sort: NEW articles first, then by date descending
+  var posts = res.posts.sort(function(a, b) {
+    if (a.is_new && !b.is_new) return -1; // NEW always first
+    if (!a.is_new && b.is_new) return 1;
+    return new Date(b.created_at) - new Date(a.created_at);
+  });
+
+  var countEl = document.getElementById('hero-post-count');
+  if (countEl) countEl.textContent = posts.length;
+
+  // ── Featured essay list ──────────────────────────────────────
+  var el = document.getElementById('hp-essays');
+  if (el) {
+    if (!posts.length) {
+      el.innerHTML = '<p style="padding:20px 0;color:var(--muted);font-family:Georgia,serif;font-style:italic;">No essays published yet.</p>';
+    } else {
+      el.innerHTML = posts.slice(0,5).map(function(p) {
+        var img = p.image_url
+          ? '<img src="'+p.image_url+'" alt=""/>'
+          : '<div class="hp-thumb-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>';
+        var badge = p.is_new
+          ? '<span class="badge badge-new">&#9679; New</span>'
+          : '';
+        var newClass = p.is_new ? ' is-new' : '';
+        return '<a href="/article.html?slug='+p.slug+'" class="hp-essay'+newClass+'">'
+          +'<div class="hp-thumb">'+img+'</div>'
+          +'<div>'
+          +'<div class="hp-essay-meta"><span class="hp-essay-cat">'+esc(p.category)+'</span>'+badge+'</div>'
+          +'<div class="hp-essay-title">'+esc(p.title)+'</div>'
+          +'<div class="hp-essay-teaser">'+esc(p.excerpt||'')+'</div>'
+          +'<div class="hp-essay-foot">'
+          +'<span class="hp-essay-date">'+formatDate(p.created_at)+' &middot; '+esc(p.read_time||'')+'</span>'
+          +'<span class="hp-read-link">Read Essay &rarr;</span>'
+          +'</div></div></a>';
+      }).join('');
+    }
+  }
+
+  // ── Sidebar recent ───────────────────────────────────────────
+  var sideEl = document.getElementById('hp-recent-posts');
+  if (sideEl) {
+    sideEl.innerHTML = posts.slice(0,5).map(function(p, i) {
+      var badge = p.is_new
+        ? '<span style="background:var(--green);color:#fff;font-family:Montserrat,sans-serif;font-size:7px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:2px 6px;border-radius:2px;animation:pulse-badge 2s infinite;">NEW</span>'
+        : '';
+      return '<a href="/article.html?slug='+p.slug+'" class="hp-recent-item">'
+        +'<div class="hp-recent-num">0'+(i+1)+'</div>'
+        +'<div>'
+        +'<div class="hp-recent-cat">'+esc(p.category)+'</div>'
+        +'<div class="hp-recent-title">'+esc(p.title)+'</div>'
+        +'<div class="hp-recent-date" style="display:flex;align-items:center;gap:6px;">'+formatDate(p.created_at)+' '+badge+'</div>'
+        +'</div></a>';
+    }).join('');
+  }
+
+  // ── Recent strip ─────────────────────────────────────────────
+  var stripEl = document.getElementById('recent-strip-items');
+  if (stripEl) {
+    stripEl.innerHTML = posts.slice(0,4).map(function(p) {
+      var badge = p.is_new
+        ? '<span class="rs-badge">NEW</span>'
+        : '';
+      return '<a href="/article.html?slug='+p.slug+'" class="recent-strip-link">'
+        +badge
+        +'<span class="rs-cat">'+esc(p.category)+'</span>'
+        +' &mdash; '+esc(p.title)
+        +'</a>';
+    }).join('');
+  }
 });
 </script>
 </body>

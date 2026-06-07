@@ -87,8 +87,8 @@ async function fixDatabase() {
 
   // Fix any "Public Policy" → "Reforms"
   const fixedCat = await Post.updateMany(
-    { category: 'Public Policy' },
-    { $set: { category: 'Reforms' } }
+    { category: { $in: ['Public Policy', 'Reforms', 'Reform Agenda'] } },
+    { $set: { category: 'Reform Agenda' } }
   );
   if (fixedCat.modifiedCount > 0) {
     console.log(`✅ Fixed ${fixedCat.modifiedCount} posts: Public Policy → Reforms`);
@@ -99,7 +99,7 @@ async function fixDatabase() {
     { slug: 'the-reform-nigeria-cannot-bring-itself-to-make' },
     {
       $set: {
-        category: 'Reforms',
+        category: 'Reform Agenda',
         content: reformContent,
         is_new: true,
         published: true,
@@ -141,7 +141,7 @@ async function seedIfEmpty() {
     {
       title: 'The Reform Nigeria Cannot Bring Itself to Make',
       slug: 'the-reform-nigeria-cannot-bring-itself-to-make',
-      category: 'Reforms',
+      category: 'Reform Agenda',
       excerpt: 'Nigeria knows what to fix. It even wrote the blueprint. What it lacks is the political nerve to stop benefiting from dysfunction.',
       content: reformContent,
       image_url: '/img/article-reform.jpg',
